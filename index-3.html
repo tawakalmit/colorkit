@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Kit</title>
+    <meta name="keywords" content="hex color, CSS filter, color conversion, web design, hex to filter">
+    <meta name="description" content="Convert hex color codes to CSS filter values, rgba for easy use">
+    <script src="/hex-to-filter.js"></script>
+    <script src="/color-kit.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+        const result = hexToFilter('#ff0000');
+        console.log(result);
+    </script>
+    <style>
+        button[disabled] {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body class="bg-[#ecf0f1]">
+
+    <div class="w-full fixed left-0 top-4">
+        <nav class="max-w-6xl mx-auto bg-[#2c3e50] h-14 rounded-xl flex items-center px-5">
+            <img class="w-[8rem]" src="/asset/icon/colorkit.png" alt="colorkit">
+        </nav>
+    </div>
+
+    <main class="flex items-center justify-center w-full h-[100dvh] flex-col gap-20">
+        <section class="mt-10 flex justify-center gap-2">
+            <input type="text" class="rounded bg-white px-3 py-2 outline-none ring-0 shadow-sm" placeholder="#fff / rgba(0,0,0,0)">
+            <button class="cursor-pointer px-5 py-2 text-white bg-[#1abc9c] rounded" disabled>Get Color</button>
+        </section>
+
+        <section class="w-full max-w-4xl mx-auto hidden">
+            <div class="aspect-square w-[10rem] bg-red-500 rounded-lg"></div>
+        </section>
+    </main>
+    <footer class="fixed w-full bottom-0 left-0 bg-[#2c3e50] h-20 z-10"></footer>
+</body>
+</html>
