@@ -3,38 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Kit</title>
-    <meta name="keywords" content="hex color, CSS filter, color conversion, web design, hex to filter">
-    <meta name="description" content="Convert hex color codes to CSS filter values, rgba for easy use">
-    <script src="/hex-to-filter.js"></script>
-    <script src="/color-kit.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <script>
-        const result = hexToFilter('#ff0000');
-        console.log(result);
-    </script>
-    <style>
-        button[disabled] {
-            background-color: gray;
-            cursor: not-allowed;
+
+    <!-- Primary Meta Tags -->
+    <title>Color Kit – Hex to CSS Filter, RGB &amp; RGBA Converter Online</title>
+    <meta name="description" content="Free online color converter. Transform hex color codes into CSS filter values, RGB, and RGBA instantly. Perfect for tinting SVG icons, web design, and frontend development.">
+    <meta name="keywords" content="hex to css filter, hex to rgba, hex to rgb, color converter, css filter generator, svg color tint, web design tool">
+    <meta name="author" content="Tawakalmit">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1abc9c">
+
+    <!-- Canonical: replace example.com with your live domain -->
+    <link rel="canonical" href="https://example.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:title" content="Color Kit – Hex to CSS Filter, RGB & RGBA Converter">
+    <meta property="og:description" content="Free online color converter. Transform hex color codes into CSS filter values, RGB, and RGBA instantly.">
+    <meta property="og:image" content="https://example.com/asset/icon/colorkit.png">
+    <meta property="og:site_name" content="Color Kit">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Color Kit – Hex to CSS Filter, RGB & RGBA Converter">
+    <meta name="twitter:description" content="Free online color converter. Transform hex color codes into CSS filter values, RGB, and RGBA instantly.">
+    <meta name="twitter:image" content="https://example.com/asset/icon/colorkit.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/asset/icon/colorkit.png">
+    <link rel="apple-touch-icon" href="/asset/icon/colorkit.png">
+
+    <!-- Structured Data: WebApplication -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Color Kit",
+        "description": "Free online color converter that transforms hex codes to CSS filter values, RGB, and RGBA.",
+        "url": "https://example.com/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires a modern browser with JavaScript enabled",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Person",
+            "name": "Tawakalmit",
+            "url": "https://www.tawakalmit.my.id/"
         }
-    </style>
+    }
+    </script>
+
+    <!-- Structured Data: FAQPage -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is a CSS filter for SVG?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A CSS filter chain (brightness, sepia, hue-rotate, saturate, contrast) lets you recolor a black SVG into any target color without changing its fill attribute. Color Kit computes the chain for you from a hex value."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Is Color Kit free to use?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes. Color Kit is completely free and runs entirely in your browser. No data is sent to a server."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Which color formats does Color Kit support?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Color Kit accepts hex (3 or 6 digit), RGB, and RGBA inputs and returns hex, RGB, RGBA, and a CSS filter equivalent."
+                }
+            }
+        ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/hexToFilterEngine.js" defer></script>
 </head>
 <body class="bg-[#ecf0f1]">
-    <main class="max-w-6xl mx-auto">
-        <nav class="w-full bg-[#2c3e50] h-14 rounded-xl mt-4 flex items-center px-5">
-            <img class="w-[8rem]" src="/asset/icon/colorkit.png" alt="colorkit">
+    <header class="max-w-6xl mx-auto">
+        <nav class="w-full bg-[#2c3e50] h-14 rounded-xl mt-4 flex items-center px-5" aria-label="Main">
+            <img class="w-[8rem]" src="/asset/icon/colorkit.png" alt="Color Kit logo" width="128" height="32">
         </nav>
+    </header>
 
-        <section class="mt-20 flex justify-center gap-2">
-            <input type="text" class="rounded bg-white px-3 py-2 outline-none ring-0 shadow-sm" placeholder="#fff / rgba(0,0,0,0)">
+    <main class="max-w-6xl mx-auto">
+        <section class="text-center mt-16 px-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Hex to CSS Filter, RGB &amp; RGBA Converter</h1>
+            <p class="mt-3 text-gray-600 max-w-2xl mx-auto">
+                Convert any hex color code into CSS <code class="bg-gray-200 px-1 rounded">filter</code> values, RGB, and RGBA instantly. Built for web designers and frontend developers who need to tint SVG icons or quickly translate between color formats.
+            </p>
+        </section>
+
+        <section class="mt-10 flex justify-center gap-2 px-4" aria-label="Color converter input">
+            <label for="color-input" class="sr-only">Enter a hex, RGB, or RGBA color value</label>
+            <input id="color-input" type="text" class="rounded bg-white px-3 py-2 outline-none ring-0 shadow-sm" placeholder="#fff / rgb(0,0,0) / rgba(0,0,0,0)">
             <button class="cursor-pointer px-5 py-2 text-white bg-[#1abc9c] rounded" disabled>Get Color</button>
         </section>
 
-        <section class="max-w-3xl mx-auto mt-10">
-            <div class="aspect-square w-[10rem] bg-red-500 rounded-lg"></div>
+        <section class="max-w-3xl mx-auto mt-10 flex flex-col gap-10 px-4" aria-label="Conversion results">
+            <article class="flex items-center gap-5">
+                <h2 class="sr-only">Color code conversions</h2>
+                <div id="real-color-preview" class="aspect-square w-[10rem] h-[10rem] rounded-lg" role="img" aria-label="Preview of the selected color"></div>
+                <div class="flex flex-col gap-3">
+                    <div class="flex gap-5">
+                        <span id="hex-element" class="font-mono text-sm text-gray-700"></span>
+                        <button class="copy-btn hidden font-mono text-sm text-blue-500 cursor-pointer" aria-label="Copy hex value">Copy</button>
+                    </div>
+                    <div class="flex gap-5">
+                        <span id="rgb-element" class="font-mono text-sm text-gray-700"></span>
+                        <button class="copy-btn hidden font-mono text-sm text-blue-500 cursor-pointer" aria-label="Copy RGB value">Copy</button>
+                    </div>
+                    <div class="flex gap-5">
+                        <span id="rgba-element" class="font-mono text-sm text-gray-700"></span>
+                        <button class="copy-btn hidden font-mono text-sm text-blue-500 cursor-pointer" aria-label="Copy RGBA value">Copy</button>
+                    </div>
+                </div>
+            </article>
+            <article class="flex items-center gap-5">
+                <h2 class="sr-only">Generated CSS filter</h2>
+                <div id="color-preview" class="aspect-square w-[10rem] h-[10rem] rounded-lg" role="img" aria-label="Preview of the generated CSS filter applied to a black source"></div>
+                <div class="flex flex-col gap-5">
+                    <span class="font-semibold text-gray-700">Filter CSS:</span>
+                    <div class="flex flex-col gap-2 items-start">
+                        <span id="filter-value" class="font-mono text-sm text-gray-700"></span>
+                        <button class="copy-btn hidden font-mono text-sm text-blue-500 cursor-pointer" aria-label="Copy CSS filter value">Copy</button>
+                    </div>
+                </div>
+            </article>
         </section>
+
+        <section class="max-w-3xl mx-auto mt-20 px-4 text-gray-700">
+            <h2 class="text-2xl font-bold mb-3">About Color Kit</h2>
+            <p class="mb-4">
+                Color Kit is a free online tool for web designers and frontend developers. Beyond simple hex-to-RGB conversion, it generates a working CSS <code class="bg-gray-200 px-1 rounded">filter</code> chain — using <code>brightness</code>, <code>sepia</code>, <code>hue-rotate</code>, <code>saturate</code>, and <code>contrast</code> — that recolors a black SVG or image into your target color without editing the source file.
+            </p>
+
+            <h2 class="text-2xl font-bold mb-3 mt-8">How to use</h2>
+            <ol class="list-decimal list-inside space-y-1">
+                <li>Type or paste a hex code (e.g. <code class="bg-gray-200 px-1 rounded">#1abc9c</code>), RGB, or RGBA value.</li>
+                <li>Click <strong>Get Color</strong>.</li>
+                <li>Copy the result you need: hex, RGB, RGBA, or the CSS <code>filter</code> string.</li>
+            </ol>
+
+            <h2 class="text-2xl font-bold mb-3 mt-8">Frequently asked questions</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-semibold">What is a CSS filter for SVG?</h3>
+                    <p>A CSS <code>filter</code> chain shifts a black SVG into any target color without changing its <code>fill</code> attribute. Color Kit calculates the chain so you can paste it straight into your stylesheet.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold">Is Color Kit free to use?</h3>
+                    <p>Yes. Color Kit is completely free and runs entirely in your browser — no data is sent to a server.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold">Which color formats are supported?</h3>
+                    <p>Hex (3 or 6 digit), RGB, and RGBA inputs. Outputs include hex, RGB, RGBA, and the CSS filter equivalent.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="h-32" aria-hidden="true"></div>
     </main>
-    <footer class="fixed w-full bottom-0 left-0 bg-[#2c3e50] h-20 z-10"></footer>
+
+    <footer class="fixed w-full bottom-0 left-0 bg-[#2c3e50] h-14 z-10 flex justify-center items-center">
+        <span class="text-sm text-white">Created By <a target="_BLANK" href="https://www.tawakalmit.my.id/" class="font-mono text-[#f1c40f] hover:underline" rel="author">Tawakalmit</a></span>
+    </footer>
+
+    <script src="/color-kit.js"></script>
 </body>
 </html>
